@@ -16,8 +16,7 @@ client.on('ready', () => {
 
 	// Job that recurrs every minute
     var rule = new schedule.RecurrenceRule();
-	rule.second = new schedule.Range(0, 59, 15);
-    // rule.minute = new schedule.Range(0, 59, 1);
+    rule.minute = new schedule.Range(0, 59, 1);
 
     var job = schedule.scheduleJob(rule, function() {
 		// If timers channel has been set up
@@ -107,13 +106,13 @@ client.on('ready', () => {
                     .setColor(0x990000)
             }
 
-			// Send embeds
+			// Send embeds and delete after 1 min
     	    timersChannel.send(activeEventsEmbed)
-		        .then(msg => msg.delete({timeout: 15000})) // 60000
+		        .then(msg => msg.delete({timeout: 60000}))
 		        .catch(error => console.log(`Failed to delete message due to ${error}`));
 
 			timersChannel.send(scheduledEventsEmbed)
-                .then(msg => msg.delete({timeout: 15000})) // 60000
+                .then(msg => msg.delete({timeout: 60000}))
                 .catch(error => console.log(`Failed to delete message due to ${error}`));
         }
         else {

@@ -1,7 +1,7 @@
 {
     "name": "Timers",
     "version": "1.0.0",
-    "description": "Timer bot for discord.",
+    "description": "Timer bot for Discord.",
     "main": "./app.js",
     "dependencies": {
         "discord.js": "github:discordjs/discord.js#master",
